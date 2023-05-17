@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#c1e8ff</color>
+    <color name="purple_700">#172a52</color>
+    <color name="teal_200">#ef0148</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="background">#FFFFFFFF</color>
+    <color name="textColor">#FF000000</color>
+    <color name="textColor2">#FF000000</color>
+    <color name="light_blue">#c1e8ff</color>
+
+    <color name="blue">#172a52</color>
+    <color name="grey">#172a52</color>
+    <color name="dark_grey">#2D2D2D</color>
+    <color name="darker_grey">#080808</color>
+
+    <color name="background2">#FFFFFFFF</color>
+    <color name="background3">#808080</color>
+    <color name="background4">#172a52</color>
+    <color name="background5">#172a52</color>
+    <color name="background6">#FFFFFFFF</color>
+    <color name="background7">#ef0148</color>
+
+
+    <color name="textGreen">#172a52</color>
+    <color name="light_pink">#fc327e</color>
+    <color name="light_green">#1ac831</color>
+    <color name="light_yellow">#ffac30</color>
+    <color name="light_purple">#cd06ff</color>
+    <color name="light_orange">#f66224</color>
+    <color name="light_red">#172a52</color>
+    <color name="dark_green">#CDC733</color>
+
+    <color name="cyan90">#c1e8ff</color>
+    <color name="blue20">#172a52</color>
+
+</resources>

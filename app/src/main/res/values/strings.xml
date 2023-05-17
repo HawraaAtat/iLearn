@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">ELearning App</string>
+    <string name="title_elearning">E-Learning App</string>
+    <string name="todo">TODO</string>
+    <string name="login_as_an_admin">Login As An Admin</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="don_t_have_an_account">Don\'t have an Account?</string>
+    <string name="forgot_your_password">Forgot your Password?</string>
+    <string name="register">Register</string>
+    <string name="course_type">Course Type</string>
+    <string name="pick_video">pick a video</string>
+    <string name="upload">UPLOAD</string>
+    <string name="enter_course_title">Enter The Title of Your Course</string>
+    <string name="login_as_a_tutor">Login As A Teacher</string>
+    <string name="add_video">Course Videos</string>
+    <string name="back">Back</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="admin_dashboard">Admin Dashboard</string>
+    <string name="create_course">Create Course</string>
+    <string name="create">Create</string>
+    <string name="are_you">Welcome, are you a</string>
+    <string name="signup_as_a_tutor">Signup As A Teacher</string>
+    <string name="signup_as_an_admin">Signup As An Admin</string>
+    <string name="login_in_as_a_student">Login In As A Student</string>
+</resources>
