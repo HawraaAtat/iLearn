@@ -3,9 +3,7 @@ package com.example.elearningapp.user;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,8 +14,6 @@ import androidx.cardview.widget.CardView;
 
 import com.example.elearningapp.MainActivity;
 import com.example.elearningapp.R;
-import com.example.elearningapp.admin.AdminDashboard;
-import com.example.elearningapp.admin.AdminLogin;
 import com.example.elearningapp.admin.AdminRegister;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,7 +23,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class UserRealDashboard extends AppCompatActivity {
+public class StudentRealDashboard extends AppCompatActivity {
 
     CardView cv_web, cv_frontend, cv_backend, cv_database, cv_android, cv_machineLearning;
     String[] courses = {"Web", "Frontend", "Backend", "Database", "Android", "Machine Learning"};
@@ -89,37 +85,37 @@ public class UserRealDashboard extends AppCompatActivity {
         cv_web.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(UserRealDashboard.this, UserDashboard.class).putExtra(CATEGORY, courses[0]));
+                startActivity(new Intent(StudentRealDashboard.this, StudentDashboard.class).putExtra(CATEGORY, courses[0]));
             }
         });
         cv_frontend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(UserRealDashboard.this, UserDashboard.class).putExtra(CATEGORY, courses[1]));
+                startActivity(new Intent(StudentRealDashboard.this, StudentDashboard.class).putExtra(CATEGORY, courses[1]));
             }
         });
         cv_backend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(UserRealDashboard.this, UserDashboard.class).putExtra(CATEGORY, courses[2]));
+                startActivity(new Intent(StudentRealDashboard.this, StudentDashboard.class).putExtra(CATEGORY, courses[2]));
             }
         });
         cv_database.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(UserRealDashboard.this, UserDashboard.class).putExtra(CATEGORY, courses[3]));
+                startActivity(new Intent(StudentRealDashboard.this, StudentDashboard.class).putExtra(CATEGORY, courses[3]));
             }
         });
         cv_android.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(UserRealDashboard.this, UserDashboard.class).putExtra(CATEGORY, courses[4]));
+                startActivity(new Intent(StudentRealDashboard.this, StudentDashboard.class).putExtra(CATEGORY, courses[4]));
             }
         });
         cv_machineLearning.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(UserRealDashboard.this, UserDashboard.class).putExtra(CATEGORY, courses[5]));
+                startActivity(new Intent(StudentRealDashboard.this, StudentDashboard.class).putExtra(CATEGORY, courses[5]));
             }
         });
         logoutButton.setOnClickListener(new View.OnClickListener() {
@@ -137,11 +133,11 @@ public class UserRealDashboard extends AppCompatActivity {
         FirebaseAuth.getInstance().signOut();
         sendUserToLoginActivity();
         progressDialog.dismiss();
-        Toast.makeText(UserRealDashboard.this, "Logout Successful", Toast.LENGTH_LONG).show();
+        Toast.makeText(StudentRealDashboard.this, "Logout Successful", Toast.LENGTH_LONG).show();
     }
 
     private void sendUserToLoginActivity() {
-        Intent intent = new Intent(UserRealDashboard.this, MainActivity.class);
+        Intent intent = new Intent(StudentRealDashboard.this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
         // Finish the current activity to prevent the user from coming back to the dashboard after logging out

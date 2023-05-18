@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ELearningApp">
         <activity
-            android:name=".user.UserRealDashboard"
+            android:name=".user.StudentRealDashboard"
             android:exported="true" />
         <activity
             android:name=".PlayCourse"
@@ -29,7 +29,7 @@
             android:name=".admin.AdminResetPasswordActivity"
             android:exported="true" />
         <activity
-            android:name=".tutor.TutorResetPasswordActivity"
+            android:name=".tutor.TeacherResetPasswordActivity"
             android:exported="true" />
         <activity
             android:name=".user.UserResetPasswordActivity"
@@ -38,28 +38,28 @@
             android:name=".admin.AdminDashboard"
             android:exported="true" />
         <activity
-            android:name=".tutor.TutorDashboard"
+            android:name=".tutor.TeacherDashboard"
             android:exported="true" />
         <activity
-            android:name=".user.UserDashboard"
+            android:name=".user.StudentDashboard"
             android:exported="true" />
         <activity
             android:name=".admin.AdminRegister"
             android:exported="true" />
         <activity
-            android:name=".tutor.TutorRegister"
+            android:name=".tutor.TeacherRegister"
             android:exported="true" />
         <activity
-            android:name=".user.UserRegister"
+            android:name=".user.StudentRegister"
             android:exported="true" />
         <activity
             android:name=".admin.AdminLogin"
             android:exported="true" />
         <activity
-            android:name=".tutor.TutorLogin"
+            android:name=".tutor.TeacherLogin"
             android:exported="true" />
         <activity
-            android:name=".user.UserLogin"
+            android:name=".user.StudentLogin"
             android:exported="true" />
         <activity
             android:name=".AddVideoActivity"

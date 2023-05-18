@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".tutor.TutorDashboard">
+    tools:context=".tutor.TeacherDashboard">
 
     <LinearLayout
         android:id="@+id/navigationBar"
@@ -55,7 +55,7 @@
         android:layout_marginBottom="10dp"
         android:contentDescription="@string/add_video"
         android:src="@drawable/ic_baseline_add_24"
-        app:tint="@color/background5" />
+        app:tint="@color/background" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/courseRv"

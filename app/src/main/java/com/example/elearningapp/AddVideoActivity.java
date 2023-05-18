@@ -27,7 +27,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.example.elearningapp.tutor.AddCourse;
-import com.example.elearningapp.tutor.TutorDashboard;
+import com.example.elearningapp.tutor.TeacherDashboard;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -38,7 +38,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import android.view.View;
 
 
 import java.util.HashMap;
@@ -129,7 +128,7 @@ public class AddVideoActivity extends AppCompatActivity {
         finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(AddVideoActivity.this, TutorDashboard.class).putExtra("username", username));
+                startActivity(new Intent(AddVideoActivity.this, TeacherDashboard.class).putExtra("username", username));
             }
         });
 
@@ -276,7 +275,7 @@ public class AddVideoActivity extends AppCompatActivity {
     }
 
     private void navigateToHomeScreen() {
-        Intent intent = new Intent(AddVideoActivity.this, TutorDashboard.class);
+        Intent intent = new Intent(AddVideoActivity.this, TeacherDashboard.class);
         startActivity(intent);
         finish();
     }

@@ -25,7 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 import java.util.regex.Pattern;
 
-public class TutorRegister extends AppCompatActivity {
+public class TeacherRegister extends AppCompatActivity {
 
     public static final String RIDER_USERS = "RidersUser";
 
@@ -46,7 +46,7 @@ public class TutorRegister extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tutor_register);
+        setContentView(R.layout.activity_teacher_register);
 
 
         et_username = findViewById(R.id.et_username);
@@ -64,7 +64,7 @@ public class TutorRegister extends AppCompatActivity {
         tv_loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(TutorRegister.this, TutorLogin.class));
+                startActivity(new Intent(TeacherRegister.this, TeacherLogin.class));
             }
         });
 
@@ -130,10 +130,10 @@ public class TutorRegister extends AppCompatActivity {
                         });
 
 
-                        Toast.makeText(TutorRegister.this, "Registration Successful", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TeacherRegister.this, "Registration Successful", Toast.LENGTH_SHORT).show();
                     } else {
                         progressDialog.dismiss();
-                        Toast.makeText(TutorRegister.this, "Registration Failed", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TeacherRegister.this, "Registration Failed", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
@@ -141,7 +141,7 @@ public class TutorRegister extends AppCompatActivity {
     }
 
     private void sendUserToMainActivity(String username) {
-        Intent intent = new Intent(TutorRegister.this, TutorDashboard.class);
+        Intent intent = new Intent(TeacherRegister.this, TeacherDashboard.class);
         intent.putExtra("username", username);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);

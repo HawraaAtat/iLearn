@@ -25,7 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 import java.util.regex.Pattern;
 
-public class UserRegister extends AppCompatActivity {
+public class StudentRegister extends AppCompatActivity {
 
     public static final String RIDER_USERS = "RidersUser";
 
@@ -63,7 +63,7 @@ public class UserRegister extends AppCompatActivity {
         tv_loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(UserRegister.this, UserLogin.class));
+                startActivity(new Intent(StudentRegister.this, StudentLogin.class));
             }
         });
 
@@ -129,10 +129,10 @@ public class UserRegister extends AppCompatActivity {
                         });
 
 
-                        Toast.makeText(UserRegister.this, "Registration Successful", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(StudentRegister.this, "Registration Successful", Toast.LENGTH_SHORT).show();
                     } else {
                         progressDialog.dismiss();
-                        Toast.makeText(UserRegister.this, "Registration Failed", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(StudentRegister.this, "Registration Failed", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
@@ -140,7 +140,7 @@ public class UserRegister extends AppCompatActivity {
     }
 
     private void sendUserToMainActivity() {
-        Intent intent = new Intent(UserRegister.this, UserRealDashboard.class);
+        Intent intent = new Intent(StudentRegister.this, StudentRealDashboard.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
 

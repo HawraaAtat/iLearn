@@ -1,4 +1,7 @@
-package com.example.elearningapp.tutor;
+package com.example.elearningapp.user;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -9,11 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.elearningapp.R;
-import com.example.elearningapp.admin.AdminLogin;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseNetworkException;
@@ -25,9 +24,9 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.regex.Pattern;
 
-public class TutorLogin extends AppCompatActivity {
+public class StudentLogin extends AppCompatActivity {
 
-    EditText et_email, et_password, et_username;
+    EditText et_email, et_password;
     Button btn_login;
     TextView tv_registerBtn;
 
@@ -45,9 +44,8 @@ public class TutorLogin extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tutor_login);
+        setContentView(R.layout.activity_user_login);
 
-        et_username = findViewById(R.id.et_username);
         et_email = findViewById(R.id.et_email);
         et_password = findViewById(R.id.et_password);
         btn_login = findViewById(R.id.btn_login);
@@ -57,7 +55,7 @@ public class TutorLogin extends AppCompatActivity {
         tv_forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(TutorLogin.this, TutorResetPasswordActivity.class));
+                startActivity(new Intent(StudentLogin.this, UserResetPasswordActivity.class));
             }
         });
 
@@ -76,14 +74,13 @@ public class TutorLogin extends AppCompatActivity {
         tv_registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(TutorLogin.this, TutorRegister.class));
+                startActivity(new Intent(StudentLogin.this, StudentRegister.class));
             }
         });
 
     }
 
     private void performLogin() {
-        String username = et_username.getText().toString();
         String email = et_email.getText().toString();
         String password = et_password.getText().toString();
 
@@ -110,8 +107,8 @@ public class TutorLogin extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
                         progressDialog.dismiss();
-                        sendUserToMainActivity(username);
-                        Toast.makeText(TutorLogin.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                        sendUserToMainActivity();
+                        Toast.makeText(StudentLogin.this, "Login Successful", Toast.LENGTH_SHORT).show();
                     } else {
                         progressDialog.dismiss();
 
@@ -119,16 +116,16 @@ public class TutorLogin extends AppCompatActivity {
                         Exception exception = task.getException();
                         if (exception instanceof FirebaseAuthInvalidUserException) {
                             // User not found or disabled
-                            Toast.makeText(TutorLogin.this, "User not found or disabled", Toast.LENGTH_LONG).show();
+                            Toast.makeText(StudentLogin.this, "User not found or disabled", Toast.LENGTH_LONG).show();
                         } else if (exception instanceof FirebaseAuthInvalidCredentialsException) {
                             // Invalid email or password
-                            Toast.makeText(TutorLogin.this, "Invalid email or password", Toast.LENGTH_LONG).show();
+                            Toast.makeText(StudentLogin.this, "Invalid email or password", Toast.LENGTH_LONG).show();
                         } else if (exception instanceof FirebaseNetworkException) {
                             // Network problem
-                            Toast.makeText(TutorLogin.this, "Network problem, please try again later", Toast.LENGTH_LONG).show();
+                            Toast.makeText(StudentLogin.this, "Network problem, please try again later", Toast.LENGTH_LONG).show();
                         } else {
                             // Other error
-                            Toast.makeText(TutorLogin.this, "Login Failed", Toast.LENGTH_LONG).show();
+                            Toast.makeText(StudentLogin.this, "Login Failed", Toast.LENGTH_LONG).show();
                         }
                     }
                 }
@@ -136,11 +133,11 @@ public class TutorLogin extends AppCompatActivity {
         }
     }
 
-    private void sendUserToMainActivity(String username) {
-        Intent intent = new Intent(TutorLogin.this, TutorDashboard.class);
-        intent.putExtra("username", username);
+    private void sendUserToMainActivity() {
+        Intent intent = new Intent(StudentLogin.this, StudentRealDashboard.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
 
     }
+
 }

@@ -6,7 +6,7 @@
     android:background="@color/background"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".user.UserRegister">
+    tools:context=".user.StudentRegister">
 
     <LinearLayout
         android:layout_width="match_parent"

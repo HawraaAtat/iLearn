@@ -12,7 +12,7 @@
     <string name="course_type">Course Type</string>
     <string name="pick_video">pick a video</string>
     <string name="upload">UPLOAD</string>
-    <string name="enter_course_title">Enter The Title of Your Course</string>
+    <string name="enter_course_title">Enter The Title of the video</string>
     <string name="login_as_a_tutor">Login As A Teacher</string>
     <string name="add_video">Course Videos</string>
     <string name="back">Back</string>

@@ -11,8 +11,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.elearningapp.R;
-import com.example.elearningapp.tutor.TutorLogin;
-import com.example.elearningapp.tutor.TutorResetPasswordActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -44,7 +42,7 @@ public class UserResetPasswordActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()){
                                 Toast.makeText(UserResetPasswordActivity.this, "Please Check Your Email", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(UserResetPasswordActivity.this, UserLogin.class));
+                                startActivity(new Intent(UserResetPasswordActivity.this, StudentLogin.class));
                             }else{
                                 String error = task.getException().getMessage();
                                 Toast.makeText(UserResetPasswordActivity.this, error, Toast.LENGTH_SHORT).show();
