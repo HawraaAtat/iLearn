@@ -38,11 +38,23 @@
 
     </RelativeLayout>
 
+    <TextView
+        android:id="@+id/progressTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/navigationBar"
+        android:layout_marginTop="5dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="30dp"
+        android:text="Progress: 0%"
+        android:textSize="18sp" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/courseRv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/navigationBar"
+        android:layout_below="@+id/progressTextView"
         android:layout_marginTop="5dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/list_videos" />

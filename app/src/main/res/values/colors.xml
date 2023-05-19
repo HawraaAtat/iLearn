@@ -12,6 +12,8 @@
     <color name="textColor">#FF000000</color>
     <color name="textColor2">#FF000000</color>
     <color name="light_blue">#c1e8ff</color>
+    <color name="gray">#C5C5C5</color>
+    <color name="green">#8BE697</color>
 
     <color name="blue">#172a52</color>
     <color name="grey">#172a52</color>

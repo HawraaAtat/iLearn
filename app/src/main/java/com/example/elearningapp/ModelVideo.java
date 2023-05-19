@@ -2,7 +2,7 @@ package com.example.elearningapp;
 
 public class ModelVideo {
     String title, videoUrl;
-
+    private boolean completed;
     public ModelVideo() {
     }
 
@@ -20,6 +20,14 @@ public class ModelVideo {
 
     public void setVideoUrl(String videoUrl) {
         this.videoUrl = videoUrl;
+    }
+
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
     }
 
     public ModelVideo(String title, String videoUrl) {
