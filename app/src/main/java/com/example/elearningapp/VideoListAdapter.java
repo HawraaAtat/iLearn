@@ -28,11 +28,13 @@ public class VideoListAdapter extends RecyclerView.Adapter<VideoListAdapter.View
     Context context;
     ArrayList<ModelVideo> videoArrayList = new ArrayList<>();
     HashMap<String, Boolean> completionStatusMap = new HashMap<>();
+    String courseTitle;
 
-    public VideoListAdapter(Context context, ArrayList<ModelVideo> videoArrayList, HashMap<String, Boolean> completionStatusMap) {
+    public VideoListAdapter(Context context, ArrayList<ModelVideo> videoArrayList, HashMap<String, Boolean> completionStatusMap, String courseTitle) {
         this.context = context;
         this.videoArrayList = videoArrayList;
         this.completionStatusMap = completionStatusMap;
+        this.courseTitle = courseTitle;
     }
 
     public void setCompletionStatus(String videoTitle, boolean isCompleted) {
@@ -46,7 +48,6 @@ public class VideoListAdapter extends RecyclerView.Adapter<VideoListAdapter.View
         return new ViewHolder(view);
     }
 
-    @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ModelVideo video = videoArrayList.get(position);
         holder.tv_title.setText(video.getTitle());
@@ -59,6 +60,8 @@ public class VideoListAdapter extends RecyclerView.Adapter<VideoListAdapter.View
             DatabaseReference videoRef = FirebaseDatabase.getInstance().getReference()
                     .child("UserProgress")
                     .child(userId)
+                    .child("courses")
+                    .child(courseTitle)
                     .child("videos")
                     .child(video.getTitle())
                     .child("completed");
@@ -90,12 +93,14 @@ public class VideoListAdapter extends RecyclerView.Adapter<VideoListAdapter.View
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, PlayVideo.class);
+                intent.putExtra("courseTitle", courseTitle); // Pass the course title to PlayVideo activity
                 intent.putExtra("title", video.getTitle());
                 intent.putExtra("videoUrl", video.getVideoUrl());
                 context.startActivity(intent);
             }
         });
     }
+
 
     @Override
     public int getItemCount() {

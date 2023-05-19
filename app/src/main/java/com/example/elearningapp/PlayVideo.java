@@ -34,7 +34,7 @@ public class PlayVideo extends AppCompatActivity {
     private DatabaseReference userProgressRef;
 
     private int savedPosition = 0; // Variable to store the current position of the video
-//    private String courseName = "";
+    private String courseTitle;
 
 
     @Override
@@ -57,7 +57,7 @@ public class PlayVideo extends AppCompatActivity {
         Intent intent = getIntent();
         title = intent.getStringExtra("title");
         videoUrl = intent.getStringExtra("videoUrl");
-//        courseName = intent.getStringExtra("courseTitle");
+        courseTitle = intent.getStringExtra("courseTitle");
 
 
         titleTv.setText(title);
@@ -158,7 +158,7 @@ public class PlayVideo extends AppCompatActivity {
             @Override
             public void onCompletion(MediaPlayer mediaPlayer) {
                 // Mark the video as completed in Firebase
-                markVideoAsCompleted();
+                markVideoAsCompleted(courseTitle, title);
 
                 // Return to the previous activity
                 finish();
@@ -192,17 +192,24 @@ public class PlayVideo extends AppCompatActivity {
         }
     }
 
-    private void markVideoAsCompleted() {
+
+    private void markVideoAsCompleted(String courseTitle, String videoTitle) {
         if (currentUser != null) {
             String userId = currentUser.getUid();
             DatabaseReference videoProgressRef = FirebaseDatabase.getInstance().getReference()
                     .child("UserProgress")
                     .child(userId)
+                    .child("courses")
+                    .child(courseTitle)
                     .child("videos")
-                    .child(title)
+                    .child(videoTitle)
                     .child("completed");
 
             videoProgressRef.setValue(true); // Set the "completed" value as true to indicate completion
         }
     }
+
+
+
+
 }

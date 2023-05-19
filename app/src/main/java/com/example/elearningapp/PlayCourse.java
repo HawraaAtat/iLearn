@@ -8,12 +8,14 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.elearningapp.tutor.AddCourse;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,7 +24,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
 
 
 public class PlayCourse extends AppCompatActivity {
@@ -91,9 +92,10 @@ public class PlayCourse extends AppCompatActivity {
                     videoArrayList.add(modelVideo);
                 }
 
-                adapterVideo = new VideoListAdapter(PlayCourse.this, videoArrayList, completionStatusMap); // Initialize the adapterVideo
+                adapterVideo = new VideoListAdapter(PlayCourse.this, videoArrayList, completionStatusMap, courseTitle); // Initialize the adapterVideo
                 videosRv.setAdapter(adapterVideo); // Set the adapter to the RecyclerView
 
+                retrieveCompletionStatus(); // Retrieve the completion status of videos
                 calculateProgress(); // Calculate the progress after loading the course list
             }
 
@@ -104,10 +106,52 @@ public class PlayCourse extends AppCompatActivity {
         });
     }
 
+    private void retrieveCompletionStatus() {
+        currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (currentUser != null) {
+            String userId = currentUser.getUid();
+            DatabaseReference progressRef = FirebaseDatabase.getInstance().getReference()
+                    .child("UserProgress")
+                    .child(userId)
+                    .child("courses")
+                    .child(courseTitle);
 
+            progressRef.addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                    // Get the video title and completion status from the dataSnapshot
+                    String videoTitle = dataSnapshot.getKey();
+                    Boolean isCompleted = dataSnapshot.child("completed").getValue(Boolean.class);
 
+                    if (videoTitle != null && isCompleted != null) {
+                        // Update the completionStatusMap with the retrieved values
+                        completionStatusMap.put(videoTitle, isCompleted);
+                        adapterVideo.notifyDataSetChanged();
+                    }
+                }
 
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                    // Handle any changes to the completion status if necessary
+                }
 
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+                    // Handle any removal of completion status if necessary
+                }
+
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                    // Handle any movement of completion status if necessary
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    // Handle any errors that may occur
+                }
+            });
+        }
+    }
 
     private void calculateProgress() {
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -119,6 +163,8 @@ public class PlayCourse extends AppCompatActivity {
             DatabaseReference progressRef = FirebaseDatabase.getInstance().getReference()
                     .child("UserProgress")
                     .child(userId)
+                    .child("courses")
+                    .child(courseTitle)
                     .child("videos");
 
             progressRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -142,9 +188,8 @@ public class PlayCourse extends AppCompatActivity {
                         }
                     }
 
-
                     int progress = (int) (((float) completedVideos / totalVideos) * 100);
-                    progressTextView.setText("Progress: " + progress + "%");
+                    updateProgressUI(progress);
                 }
 
                 @Override
@@ -153,14 +198,11 @@ public class PlayCourse extends AppCompatActivity {
                 }
             });
         } else {
-            progressTextView.setText("Progress: 10%");
+            updateProgressUI(10); // Set default progress to 10%
         }
     }
 
     private void updateProgressUI(int progress) {
-        progressTextView.setText(progress + "%");
+        progressTextView.setText("Progress: " + progress + "%");
     }
-
-
-
 }
