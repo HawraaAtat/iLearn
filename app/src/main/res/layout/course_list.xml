@@ -99,15 +99,39 @@
                 android:layout_width="89dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/totlaLessonsTv"
+                android:layout_alignParentBottom="true"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="15dp"
+                android:layout_marginBottom="15dp"
                 android:layout_toEndOf="@+id/iv_img"
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:text="dd/MM/yyyy"
                 android:textColor="@color/darker_grey"
                 android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/enrollButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="2dp"
+                android:visibility="visible"
+                android:text="Enroll" />
+
+            <Button
+                android:id="@+id/watchButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="2dp"
+                android:visibility="gone"
+                android:text="Watch" />
 
         </RelativeLayout>
 

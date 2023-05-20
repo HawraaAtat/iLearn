@@ -1,7 +1,11 @@
 package com.example.elearningapp;
 
+import java.util.List;
+
 public class ModelCourse {
     String id, category, title, totalLessons, tutor, timestamp;
+    private List<String> enrolledStudents;
+
 
     public String getId() {
         return id;
@@ -49,6 +53,14 @@ public class ModelCourse {
 
     public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public List<String> getEnrolledStudents() {
+        return enrolledStudents;
+    }
+
+    public void setEnrolledStudents(List<String> enrolledStudents) {
+        this.enrolledStudents = enrolledStudents;
     }
 
     public ModelCourse() {
